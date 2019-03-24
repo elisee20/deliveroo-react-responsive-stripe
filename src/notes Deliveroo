@@ -1,0 +1,50 @@
+choses impossibles:
+afficher les valeurs d'un objet a un
+(faire un obj.key1.key2: renvoie undefined), dans ce cas, 
+utiliser obj.key1[key2]
+cf une autre explication possible sur les cas d'undefined, et les react.prototypes (types de valeurs)
+
+Object.keys(objet): renvoie un tableau avec toutes les keys de objet.
+const {keys}
+
+Attribuer une class à un composant: ne se fait pas, au niveau du parent
+type( dans Parent.js, on ne fait pas <Child className="classe"/>), mais au niveau de l'enfant 
+class Child extends React.Component{ render(){
+  return <div className="class-child">{this.props.value}</div>
+}}
+
+coder de manière propre, ex un bud que j'avais sur la fonction addtomenu (stocker les variables temp dans une variable déclarée, surtt quand elle a a retournée par al fonction 1 pour etre utilisée dans la fonction 2)
+ex:
+function isMenu(
+  ....
+ var index=value
+ return index
+) 
+
+faire attention a petites erreures: 
+ex <div classname=""> est une erreur;
+
+Relations composants / parents:
+1- cas le plus simple: dans le parent, un click sur le parent permet d'actualiser le state (pas d'enfants crées)
+<article onClick={()=>this.FunctionOnclick}>
+2. cas un peu plus complexe: Un parent qui comporte un enfant Cart. Cart a besoin d'accéder au state cart(qui s'actualise par un element du parent ou a un click sur l'enfant): 
+On doit donc: transférer en props à Cart toutes les infos nécessaires: 
+
+<Cart cart={this.state.cart} functionToExecuteinCart={this.functionToExecuteinCart}
+functionsupportToExecuteinCart={this.functionsupportToExecuteinCart}>
+
+Dans l'enfant Cart,
+
+class Cart....
+renderLocalVariable =(cart)=>{
+for (i.....)
+{ array.push(<div>cart[i]</div>)} 
+
+
+}
+render(){
+  return (
+<div onClick={()=>this.props.functionsupportToExecuteinCart(this.props.cart) }></div>
+<div>{this.renderLocalVariable(this.props.cart)}</div>
+  )
+}
